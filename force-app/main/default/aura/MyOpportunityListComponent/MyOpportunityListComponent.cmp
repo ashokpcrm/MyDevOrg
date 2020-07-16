@@ -1,0 +1,28 @@
+<aura:component controller="MyOpportunityListController" implements="flexipage:availableForAllPageTypes">
+    
+    <!--Declaring client side attributes to be used in componet-->
+    <aura:attribute Name="lstOpportunity" type="Opportunity[]"/>
+	<aura:attribute Name="columnsToDisplay" type="list"/>
+    <aura:attribute Name="searchKeyword" type="String"/>
+   
+    
+    <!--Method to be called in component initialization-->
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+    <lightning:card title="Opportunity Name" iconName="standard:opportunity"/>
+  
+    <!--search box-->
+    <lightning:layout>
+            <lightning:layoutItem size="3" padding="around-small">
+            <lightning:input aura:id="searchField"
+                             label="Opportunity Name" 
+                             value="{!v.searchKeyword}" 
+                             placeholder="Search Opportunities" 
+                             onchange="{!c.searchOpportunities}" />    
+            </lightning:layoutItem>
+        </lightning:layout>
+    <!--Opportunity list goes here-->
+    <lightning:datatable keyField="id"
+                data="{!v.lstOpportunity }"
+                columns="{!v.columnsToDisplay }"
+                hideCheckboxColumn="true"/>
+    </aura:component>

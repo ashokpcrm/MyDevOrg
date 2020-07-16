@@ -1,0 +1,20 @@
+<aura:component controller="MyAccContactController" implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" >
+    
+    <!--Declaring client side attributes to be used in component-->
+    <aura:attribute Name="lstContact" type="Contact[]"/>
+	<aura:attribute Name="columnsToDisplay" type="list"/>
+    <aura:attribute Name="accountId" type="Id"/>
+  	<aura:attribute Name="recordId" type="Id"/>
+   
+    
+    <!--Method to be called in component initialization-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:card title="Account Name" iconName="standard:account"/>
+  
+    
+    <!--Contact list goes here-->
+    <lightning:datatable keyField="recordId"
+                data="{!v.lstContact }"
+                columns="{!v.columnsToDisplay }"
+                hideCheckboxColumn="true"/>
+    </aura:component>
