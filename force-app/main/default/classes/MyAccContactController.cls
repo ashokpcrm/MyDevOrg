@@ -1,3 +1,4 @@
+//test comment
 public with sharing class MyAccContactController {
 //get the list of Contacts bases on the account
     @AuraEnabled
