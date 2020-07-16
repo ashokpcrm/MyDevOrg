@@ -47,7 +47,7 @@ node {
                     rc = sh returnStatus: true, script: "/usr/local/bin/sfdx force:auth:jwt:grant --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile ${server_key_file} --setdefaultdevhubusername --instanceurl ${SF_INSTANCE_URL}"
                 }else{
                     println('Not unix')
-                    rc = bat returnStatus: true, script: "\"C:\\Program Files\\Salesforce CLI\\bin\\sfdx\" force:auth:jwt:grant --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile \"${server_key_file}\" --setdefaultdevhubusername --instanceurl ${SF_INSTANCE_URL}"
+                    rc = bat returnStatus: true, script: "\"C:\\Users\\GeekSoft - 5\\AppData\\Local\\Programs\\Salesforce CLI\\bin" force:auth:jwt:grant --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile \"${server_key_file}\" --setdefaultdevhubusername --instanceurl ${SF_INSTANCE_URL}"
                 }
                 if (rc != 0) { error 'hub org authorization failed' }
 
@@ -61,7 +61,7 @@ node {
                     
                     // rmsg = bat returnStdout: true, script: "\"C:\\Program Files (x86)\\Salesforce CLI\\bin\\sfdx\" force:auth:jwt:grant --clientid ${SF_CONSUMER_KEY} --instanceurl ${SF_INSTANCE_URL} --username ${SF_USERNAME} --jwtkeyfile \"${server_key_file}\" & \"C:\\Program Files (x86)\\Salesforce CLI\\bin\\sfdx\" force:source:deploy --manifest manifest/package.xml -u ${SF_USERNAME}"
                    
-                   rmsg = bat returnStdout: true, script: "\"C:\\Program Files\\Salesforce CLI\\bin\\sfdx\" force:auth:logout --targetusername ${SF_USERNAME} -p & \"C:\\Program Files\\Salesforce CLI\\bin\\sfdx\" force:auth:jwt:grant --clientid ${SF_CONSUMER_KEY} --instanceurl ${SF_INSTANCE_URL} --username ${SF_USERNAME} --jwtkeyfile \"${server_key_file}\" & \"C:\\Program Files\\Salesforce CLI\\bin\\sfdx\" force:source:deploy --manifest manifest/package.xml -u ${SF_USERNAME}"
+                   rmsg = bat returnStdout: true, script: "\"C:\\Users\\GeekSoft - 5\\AppData\\Local\\Programs\\Salesforce CLI\\bin" force:auth:logout --targetusername ${SF_USERNAME} -p & \"C:\\Program Files\\Salesforce CLI\\bin\\sfdx\" force:auth:jwt:grant --clientid ${SF_CONSUMER_KEY} --instanceurl ${SF_INSTANCE_URL} --username ${SF_USERNAME} --jwtkeyfile \"${server_key_file}\" & \"C:\\Program Files\\Salesforce CLI\\bin\\sfdx\" force:source:deploy --manifest manifest/package.xml -u ${SF_USERNAME}"
                     //rmsg = bat returnStdout: true, script: "\"C:\\Program Files (x86)\\Salesforce CLI\\bin\\sfdx\" force:source:deploy --manifest manifest/package.xml -u ${SF_USERNAME}"
                 }
                 
